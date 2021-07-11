@@ -1,0 +1,61 @@
+for word in line.split(' '):
+    if word in DictionaryOfWords.keys():
+        DictionaryOfWords[word].append(i)
+    else:
+        DictionaryOfWords[word] = [i]
+    Novel.append(word)
+    i+=1
+
+
+def GetQuery():
+   
+    word = input("Enter a word : ")      #Get Input from the user regarding what word s/he wants to query for
+
+    Number = int(input("Enter number of results you want : "))      #Get Input from the user regarding how many results the user wants to see
+
+    return (word,Number) 
+
+
+
+
+def PrintContext(index):
+    
+    global Novel                          #Declares the list Novel as a Global Variable
+    
+    #COMPLETE THE CODE FROM HERE:
+    
+    for i in range( index ) :           #Define the range so that the task above is fulfilled
+        
+        print(Novel[index], end = ' ')          #Print the word (using List Indexing) with a space after that
+        
+    print('\n')
+
+
+
+
+def PrintResult(word, NumQuery):
+  
+    global DictionaryOfWords                #Allows us to use the Dictionary as a global variable
+    
+    #COMPLETE THE CODE FROM HERE:
+    
+    L = DictionaryOfWords[word] 
+    
+    for i in range(0,min(len(L),NumQuery)):
+        PrintContext(i)             #Actually print the words surrounding the ith occurence of the given word
+
+
+
+while 1>0 :   
+    
+    Choice = input('Press Y in order to Continue with the next query or N to end. \n Please press Enter after entering your choice!')
+    
+    #COMPLETE THE CODE FROM HERE:
+    
+    if Choice== 'Y' or Choice == 'y' :                     # If the user wants to query 
+        ans = GetQuery()
+        PrintResult(ans[0], ans[1])                        #Use some of the past defined function to do so
+        
+    else:
+        
+        break
